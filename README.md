@@ -1,29 +1,4 @@
-<h1 align="center">Awesome LLM Skills</h1>
-
-<p align="center">
-  <a href="url">
-  <img width="1280" height="640" alt="Awesome LLM Skills" src="https://github.com/user-attachments/assets/fb10b4c7-4155-4026-95b9-b4b979a14921" />
-  </a>
-
-</p>
-
-
-<p align="center">
-  A curated list of awesome LLM Skills, resources, and tools for customizing AI workflows on tools like Claude Code, Codex, Gemini CLI, Qwen Code, OpenCode etc.
-</p>
-
-
-<p align="center">
-  <a href="https://awesome.re">
-    <img src="https://awesome.re/badge.svg" alt="Awesome" />
-  </a>
-  <a href="https://makeapullrequest.com">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome" />
-  </a>
-  <a href="https://www.apache.org/licenses/LICENSE-2.0">
-    <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg?style=flat-square" alt="License: Apache-2.0" />
-  </a>
-</p>
+<h1 align="center">Minimal Skills for 2026</h1>
 
 
 ## Contents
