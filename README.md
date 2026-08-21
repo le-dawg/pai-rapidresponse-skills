@@ -1,5 +1,10 @@
 <h1 align="center">Minimal Skills for 2026</h1>
 
+<p align="center">
+  <a href="https://github.com/le-dawg/pai-rapidresponse-skills/actions/workflows/validate-skills.yml"><img src="https://github.com/le-dawg/pai-rapidresponse-skills/actions/workflows/validate-skills.yml/badge.svg" alt="Validate Agent Skills"></a>
+  <a href="https://agentskills.io"><img src="https://img.shields.io/badge/AgentSkills.io-Standard-00D084?style=flat-square" alt="AgentSkills.io Standard"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square" alt="License: MIT"></a>
+</p>
 
 ## Contents
 
@@ -7,11 +12,12 @@
 - [Quick Start](#quick-start)
 - [Skills](#skills)
 - [Platforms](#platforms)
+  - [Google Antigravity (AGY)](#google-antigravity-agy)
   - [Claude Code (Anthropic)](#claude-code-anthropic)
   - [Claude Desktop (Anthropic)](#claude-desktop-anthropic)
   - [Codex CLI (OpenAI)](#codex-cli-openai)
-  - [Gemini CLI (Google)](#gemini-cli-google)
   - [OpenCode (Open-source CLI)](#opencode-open-source-cli)
+  - [Goose (Block)](#goose-block)
   - [Qwen Code (Alibaba)](#qwen-code-alibaba)
 - [Contributing](#contributing)
   - [Quick Contribution Steps](#quick-contribution-steps)
@@ -177,6 +183,7 @@ LLM Skills are customizable workflows that teach LLM how to perform specific tas
 
 ### Security & Systems
 
+- [HTML Sanitizer & Zero-JS Converter](./html-sanitizer/) - Audits, sanitizes, and flattens HTML documents and SingleFile web archives into 100% inert, zero-JavaScript assets; flattens forms to safe layout containers while preserving pre-filled values and visual styling.
 - [computer-forensics](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics) - Digital forensics analysis and investigation techniques.
 - [file-deletion](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion) - Secure file deletion and data sanitization methods.
 - [metadata-extraction](https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction) - Extract and analyze file metadata for forensic purposes.
@@ -189,6 +196,14 @@ LLM Skills are customizable workflows that teach LLM how to perform specific tas
 By [Infrasity-Labs](https://github.com/Infrasity-Labs)
 
 ## Platforms
+
+### Google Antigravity (AGY)
+
+**Set‑up and enable skills**
+
+* **Global Discovery:** Place skill folders under `~/.gemini/config/skills/<skill-name>/`.
+* **Workspace Discovery:** Place skill folders under `.agents/skills/<skill-name>/` or `skills/<skill-name>/`.
+* **Progressive Disclosure:** AGY dynamically discovers `SKILL.md` frontmatter, binds registered slash commands (e.g. `/sanitize`, `/audit-html`), and loads reference docs on demand.
 
 ### Claude Code (Anthropic)
 
@@ -214,13 +229,6 @@ By [Infrasity-Labs](https://github.com/Infrasity-Labs)
 * While Codex doesn't natively support Anthropic's Skills format, you can adapt skills by including instructions in your prompts or configuration files.
 * Best for code completion, refactoring, and generating boilerplate code across multiple programming languages.
 
-### Gemini CLI (Google)
-
-**Set‑up and enable skills**
-
-* Install Node 20+ and then install Gemini CLI via `npm install -g @google/gemini-cli` or run it on‑demand with `npx @google/gemini-cli`.
-* Run `gemini` and sign in with your Google account; a browser window will open for authentication. Gemini CLI currently doesn't have built‑in support for Anthropic skills, but you can follow skill instructions by loading your own `SKILL.md` file and referencing it in prompts. Use the `@` symbol to upload files containing your skill instructions.
-
 ### OpenCode (Open-source CLI)
 
 **Set‑up and enable skills**
@@ -228,14 +236,21 @@ By [Infrasity-Labs](https://github.com/Infrasity-Labs)
 * Install OpenCode with a one‑line script: `curl -fsSL https://opencode.ai/install | bash`.
 * Run `opencode auth login` and choose your provider (e.g., Cerebras) to configure your API key.
 * Start the interface with `opencode` and initialize your project context using `/init`.
-* OpenCode doesn't natively load Anthropic skills, but you can place a `skills/` folder in your project and ask OpenCode to read the `SKILL.md` file; this approximates skills functionality and lets you reuse instructions across tools.
+* Place skill folders in `.agents/skills/` or `skills/` in your project.
+
+### Goose (Block)
+
+**Set‑up and enable skills**
+
+* Place skill folders under `~/.config/goose/skills/<skill-name>/` (User) or `.goose/skills/` (Workspace).
+* Goose automatically loads tools and runbooks defined in `SKILL.md`.
 
 ### Qwen Code (Alibaba)
 
 **Set‑up and enable skills**
 
 * Ensure Node 20+ is installed, then install Qwen Code with `npm install -g @qwen-code/qwen-code@latest` and verify with `qwen --version`. Alternatively, clone the repository and install locally.
-* Start a session by running `qwen`. Qwen Code currently doesn't support Anthropic skills directly, but you can still adopt the skill pattern by creating a `skills/` directory and prompting Qwen Code to follow the instructions in your `SKILL.md` files.
+* Start a session by running `qwen`. Prompt Qwen Code to follow the instructions in your `SKILL.md` files.
 
 
 

@@ -1,0 +1,38 @@
+name: Validate Agent Skills
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  validate-skills:
+    name: Lint & Verify Agent Skills
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Run AgentSkills Specification Validator
+        run: |
+          uv run scripts/ci_validate_skills.py
+
+      - name: Execute html-sanitizer Tooling Verification
+        run: |
+          echo "Testing audit_html.py against dirty fixture..."
+          uv run html-sanitizer/scripts/audit_html.py html-sanitizer/fixtures/dirty_sample.html || true
+
+          echo "Testing sanitize_html.py..."
+          uv run html-sanitizer/scripts/sanitize_html.py html-sanitizer/fixtures/dirty_sample.html -o temp_clean.html
+
+          echo "Testing audit_html.py against sanitized output (Must be 100% clean)..."
+          uv run html-sanitizer/scripts/audit_html.py temp_clean.html

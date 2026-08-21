@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Dirty Test Fixture</title>
+  <style>
+    .project-form { max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ccc; }
+    .bad-css {   }
+  </style>
+</head>
+<body>
+  <h1>Project Submission Form (Zero-JS Verification)</h1>
+  
+  <div id="submission-form" class="project-form">
+    <label for="pname">Project Name:</label>
+    <input type="text" id="pname" name="pname" value="verein.OS">
+
+    <label for="desc">Core Idea:</label>
+    <textarea id="desc" name="desc" rows="4">Digital operating system for non-profit organizations with zero administrative overhead.</textarea>
+
+    <button type="submit">Submit</button>
+  </div>
+
+  <a>Malicious Link</a>
+  <img src="invalid.png">
+
+  <!-- Inline SVG with scripts -->
+  <svg width="100" height="100">
+    
+    <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+    <animate attributeName="opacity" from="0" to="1" dur="1s" />
+  </svg>
+
+  <!-- Base64 Encoded SVG containing 
+</body>
+</html>

