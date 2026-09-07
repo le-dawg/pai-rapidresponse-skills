@@ -1,0 +1,35 @@
+name: Update Submodules
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs hourly
+  workflow_dispatch:      # Allows manual trigger via GitHub Actions UI or API
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository with submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Update submodules to latest remote HEAD
+        run: |
+          git submodule update --remote --merge
+
+      - name: Check for changes and commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "chore(submodule): auto-update submodules to latest remote HEAD"
+            git push origin master
+          else
+            echo "Submodules are already up-to-date."
+          fi
