@@ -1,0 +1,3 @@
+[submodule "yt-skill"]
+	path = yt-skill
+	url = https://github.com/le-dawg/yt-skill.git
