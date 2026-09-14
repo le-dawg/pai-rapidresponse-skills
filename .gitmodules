@@ -1,3 +1,6 @@
 [submodule "yt-skill"]
 	path = yt-skill
 	url = https://github.com/le-dawg/yt-skill.git
+[submodule "geo-seo-claude"]
+	path = geo-seo-claude
+	url = https://github.com/le-dawg/geo-seo-claude.git
