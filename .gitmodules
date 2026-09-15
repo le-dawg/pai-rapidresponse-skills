@@ -4,3 +4,6 @@
 [submodule "geo-seo-claude"]
 	path = geo-seo-claude
 	url = https://github.com/le-dawg/geo-seo-claude.git
+[submodule "no-ai-slop"]
+	path = no-ai-slop
+	url = https://github.com/le-dawg/no-ai-slop.git
