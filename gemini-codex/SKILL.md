@@ -76,6 +76,28 @@ This skill is installed under the exact name `gemini-codex` so slash invocation 
 - `antigravity`
 - `copilot`
 
+## Explicit Codex credential and model instructions
+
+Codex credential and model policy:
+
+- If Codex is called with no specific model, use Codex's default model and do not pass a model option.
+- If a specific model is mentioned and it is exactly `gpt-5.4`, use that model without applying `TEMPKEY`.
+- If a specific model is mentioned and it is anything other than exactly `gpt-5.4`, use the `TEMPKEY` environment variable as the Codex credential and preserve the requested model exactly.
+- `TEMPKEY` means the name of the environment variable whose value must be supplied to the Codex process as `OPENAI_API_KEY`; never ask for, print, log, or embed its secret value.
+- If `TEMPKEY` is unset or empty when required, fail clearly and do not silently use local login or another credential.
+- Scope the credential override to the delegated Codex process only; do not modify global shell configuration or persist the secret.
+- Treat model placeholders in prose such as `<MODEL>` or `ABC` as placeholders, never as literal model names. Only a concrete model explicitly mentioned by the user counts as a specific model.
+
+### Normalized example
+
+```yaml
+source: inferred current harness
+ target: codex
+ model: <user-supplied model identifier, or omitted when no model was specified>
+ auth_env: TEMPKEY only when a specific model was named and it was not gpt-5.4
+ prompt: <remaining user request>
+```
+
 ## Router rules
 
 - Accept canonical `:<target>` syntax.
@@ -111,22 +133,34 @@ This skill is installed under the exact name `gemini-codex` so slash invocation 
 ## Claude adapter
 - Use destination-native Claude invocation patterns.
 - Preserve continuation context where possible.
-- Model is optional.
+- Model is optional for Claude itself.
+- When the request delegates onward to Codex, apply the Codex credential and model policy exactly as described above.
 - Example: `claude "continue from current task context"`
+- With no model: `codex exec "<prompt>"`
+- With `gpt-5.4`: `codex exec --model gpt-5.4 "<prompt>"`
+- With any other explicitly named model: `OPENAI_API_KEY="$TEMPKEY" codex exec --model <user-supplied-model> "<prompt>"`
 
 ## Antigravity adapter
 - Use destination-native Antigravity invocation patterns.
-- Antigravity defaults to `gemini-3.1-pro`.
+- Antigravity defaults to `gemini-3.1-pro` only when Antigravity itself is the target.
 - If `--model` is omitted, default to `gemini-3.1-pro`.
 - If a model is supplied, respect it.
+- When the request delegates onward to Codex, do not substitute the Antigravity default; apply the Codex credential and model policy exactly as described above.
 - Example: `antigravity "investigate this issue"`
+- With no model: `codex exec "<prompt>"`
+- With `gpt-5.4`: `codex exec --model gpt-5.4 "<prompt>"`
+- With any other explicitly named model: `OPENAI_API_KEY="$TEMPKEY" codex exec --model <user-supplied-model> "<prompt>"`
 
 ## Copilot adapter
 - Use destination-native Copilot invocation patterns.
-- Copilot requires `--model`.
+- Copilot requires `--model` when Copilot itself is the target.
 - If `--model` is missing, stop and ask the user.
 - Do not guess the model.
-- Example: `copilot --model gpt-5 "review this implementation"`
+- When the request delegates onward to Codex, preserve Codex `auth_env` and `model`; do not reinterpret the user-supplied model as a Copilot model.
+- Example: `copilot --model gpt-5.4 "review this implementation"`
+- With no model: `codex exec "<prompt>"`
+- With `gpt-5.4`: `codex exec --model gpt-5.4 "<prompt>"`
+- With any other explicitly named model: `OPENAI_API_KEY="$TEMPKEY" codex exec --model <user-supplied-model> "<prompt>"`
 
 ### Copilot model selection
 
