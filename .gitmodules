@@ -10,3 +10,6 @@
 [submodule "ccusage"]
 	path = ccusage
 	url = https://github.com/le-dawg/ccusage.git
+[submodule "rental-listing-syndicator"]
+	path = rental-listing-syndicator
+	url = https://github.com/le-dawg/rental-listing-syndicator.git
