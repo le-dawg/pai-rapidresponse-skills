@@ -15,27 +15,24 @@ copilot_confirmed_working_models:
 antigravity_model: gemini-3.1-pro
 copilot_known_models:
   - auto
-  - claude-sonnet-4.6
-  - claude-sonnet-4.5
   - claude-haiku-4.5
-  - gpt-5.4
-  - gpt-5.3-codex
-  - gpt-5.4-mini
-  - gpt-5-mini
-  - gpt-4.1
+  - claude-haiku-5.5
   - claude-sonnet-5
-  - gemini-3.1-pro-preview
-  - gemini-3.5-flash
-  - gemini-3.6-flash
+  - claude-sonnet-5.5
   - gemini-3.7-flash
+  - gemini-3.8-flash
+  - gpt-5-mini
+  - gpt-5.3-codex
+  - gpt-5.4
+  - gpt-5.4-mini
   - gpt-5.6-luna
   - gpt-5.6-terra
+  - gpt-6-luna
   - grok-4.5
   - grok-4.6
-  - kimi-k2.7-code
+  - grok-4.7
   - kimi-k3
   - mai-code-1.1-flash
-  - mai-code-1-flash-picker
 internal_routing_object:
   source: inferred current harness by default
   target: destination harness key
@@ -164,30 +161,27 @@ source: inferred current harness
 
 ### Copilot model selection
 
-The following model IDs were listed by the local GitHub Copilot CLI runtime on 2026-08-24:
+The following model IDs were listed by the local GitHub Copilot CLI runtime for user `le-dawg` on 2026-10-09:
 
 - `auto`
-- `claude-sonnet-4.6`
-- `claude-sonnet-4.5`
 - `claude-haiku-4.5`
-- `gpt-5.4`
-- `gpt-5.3-codex`
-- `gpt-5.4-mini`
-- `gpt-5-mini`
-- `gpt-4.1`
+- `claude-haiku-5.5`
 - `claude-sonnet-5`
-- `gemini-3.1-pro-preview`
-- `gemini-3.5-flash`
-- `gemini-3.6-flash`
+- `claude-sonnet-5.5`
 - `gemini-3.7-flash`
+- `gemini-3.8-flash`
+- `gpt-5-mini`
+- `gpt-5.3-codex`
+- `gpt-5.4`
+- `gpt-5.4-mini`
 - `gpt-5.6-luna`
 - `gpt-5.6-terra`
+- `gpt-6-luna`
 - `grok-4.5`
 - `grok-4.6`
-- `kimi-k2.7-code`
+- `grok-4.7`
 - `kimi-k3`
 - `mai-code-1.1-flash`
-- `mai-code-1-flash-picker`
 
 Confirmed live on this machine with a non-interactive ACK prompt:
 
