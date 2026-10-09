@@ -16,3 +16,6 @@
 [submodule "painreader"]
 	path = painreader
 	url = https://github.com/le-dawg/painreader.git
+[submodule "gemini-codex"]
+	path = gemini-codex
+	url = https://github.com/le-dawg/gemini-codex.git
