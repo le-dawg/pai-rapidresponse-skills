@@ -13,3 +13,6 @@
 [submodule "rental-listing-syndicator"]
 	path = rental-listing-syndicator
 	url = https://github.com/le-dawg/wg-gesucht-skill.git
+[submodule "painreader"]
+	path = painreader
+	url = https://github.com/le-dawg/painreader.git
